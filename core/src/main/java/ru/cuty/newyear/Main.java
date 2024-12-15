@@ -88,7 +88,7 @@ public class Main extends ApplicationAdapter
             snowPeople[5] = new SnowPeople(1170, 10, 120, 120, imgSnowPeople, sndPhraza6);
         }
 
-        sndNewYear.setVolume(0.5f);
+        sndNewYear.setVolume(0.2f);
         sndNewYear.play();
     }
 
