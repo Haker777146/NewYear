@@ -7,12 +7,14 @@ public class Showers
     float x;
     float y;
     float stepY;
+    float stepX;
     float width;
     float height;
     Texture img;
     void fly()
     {
         y -= stepY;
+        x -= stepX;
     }
     public Showers(float x, float y, float width, float height, Texture img)
     {
@@ -20,7 +22,8 @@ public class Showers
         this.x = x;
         this.width = width;
         this.height = height;
-        stepY = MathUtils.random( 2.9f, 3);
+        stepY = MathUtils.random(1f,1.3f);
+        stepX = MathUtils.random(-0.13f, 0.13f);
         this.img = img;
     }
 }

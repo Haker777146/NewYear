@@ -2,6 +2,7 @@ package ru.cuty.newyear;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,28 +18,19 @@ public class Main extends ApplicationAdapter
     private SpriteBatch batch;
     private OrthographicCamera camera;
 
-    private Texture imgBackGround;
-    private Texture imgSnow;
-    private Texture imgGerlund;
-    private Texture imgStarEle;
-    private Texture imgSnowPeople;
+    private Texture imgBackGround, imgSnow, imgGerlund, imgStarEle, imgSnowPeople;
+
+    private Sound sndPhraza1, sndPhraza2, sndPhraza3, sndPhraza4, sndPhraza5, sndPhraza6;
+
+    private Music sndNewYear;
+
+    private BitmapFont font;
 
     public static final float SCR_WIDTH = 1280;
     public static final float SCR_HEIGHT = 720;
     public static final float SPAWN_SNOW1_Y = 750;
 
-    private Sound sndNewYear;
-    private Sound sndPhraza1;
-    private Sound sndPhraza2;
-    private Sound sndPhraza3;
-    private Sound sndPhraza4;
-    private Sound sndPhraza5;
-    private Sound sndPhraza6;
-
-    private BitmapFont font;
-
-    private int numbersnow;
-    private int g;
+    private int numbersnow, g;
 
     private Vector3 touch;
 
@@ -60,7 +52,7 @@ public class Main extends ApplicationAdapter
         imgStarEle = new Texture("Pictures/StarEle.png");
         imgSnowPeople = new Texture("Pictures/SnowPeople.png");
 
-        sndNewYear = Gdx.audio.newSound(Gdx.files.internal("Sounds/NewYearsounds.mp3"));
+        sndNewYear = Gdx.audio.newMusic(Gdx.files.internal("Sounds/NewYearsounds.mp3"));
         sndPhraza1 = Gdx.audio.newSound(Gdx.files.internal("Sounds/sndPhraza1.mp3"));
         sndPhraza2 = Gdx.audio.newSound(Gdx.files.internal("Sounds/sndPhraza2.mp3"));
         sndPhraza3 = Gdx.audio.newSound(Gdx.files.internal("Sounds/sndPhraza3.mp3"));
@@ -96,7 +88,8 @@ public class Main extends ApplicationAdapter
             snowPeople[5] = new SnowPeople(1170, 10, 120, 120, imgSnowPeople, sndPhraza6);
         }
 
-        sndNewYear.play(0.5f);
+        sndNewYear.setVolume(0.5f);
+        sndNewYear.play();
     }
 
     @Override
@@ -173,7 +166,7 @@ public class Main extends ApplicationAdapter
         g++;
         if(g%10 == 0 && numbersnow < snow.length)
         {
-            float wh = MathUtils.random(40f,50);
+            float wh = MathUtils.random(20f,30);
             float x = MathUtils.random(15f,1235);
             snow[numbersnow] = new Snow1(x, SPAWN_SNOW1_Y, wh, wh, imgSnow);
             numbersnow++;

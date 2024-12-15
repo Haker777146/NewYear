@@ -11,7 +11,6 @@ public class SnowPeople
     float height;
     Texture img;
     Sound snd;
-    boolean bln;
     public SnowPeople(float x, float y, float width, float height, Texture img, Sound snd)
     {
         this.y = y;
