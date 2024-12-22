@@ -36,7 +36,7 @@ public class Main extends ApplicationAdapter
 
     StarEle[] starEle = new StarEle[12];
     SnowPeople[] snowPeople = new SnowPeople[6];
-    Snow1[] snow = new Snow1[10000000];
+    Snow1[] snow1 = new Snow1[10000000];
 
     @Override
     public void create()
@@ -88,7 +88,7 @@ public class Main extends ApplicationAdapter
             snowPeople[5] = new SnowPeople(1170, 10, 120, 120, imgSnowPeople, sndPhraza6);
         }
 
-        sndNewYear.setVolume(0.2f);
+        sndNewYear.setVolume(0.35f);
         sndNewYear.play();
     }
 
@@ -134,7 +134,7 @@ public class Main extends ApplicationAdapter
 
         for (int i = 0; i < numbersnow; i++)
         {
-            batch.draw(imgSnow, snow[i].x, snow[i].y, snow[i].width, snow[i].height);
+            batch.draw(imgSnow, snow1[i].x, snow1[i].y, snow1[i].width/2, snow1[i].height/2, snow1[i].width, snow1[i].height, 1,1, snow1[i].rotation, 0,0, 1025,1025, false, false);
         }
         batch.end();
     }
@@ -164,11 +164,11 @@ public class Main extends ApplicationAdapter
     private void Snowers()
     {
         g++;
-        if(g%10 == 0 && numbersnow < snow.length)
+        if(g%15 == 0 && numbersnow < snow1.length)
         {
             float wh = MathUtils.random(20f,30);
             float x = MathUtils.random(15f,1235);
-            snow[numbersnow] = new Snow1(x, SPAWN_SNOW1_Y, wh, wh, imgSnow);
+            snow1[numbersnow] = new Snow1(x, SPAWN_SNOW1_Y, wh, wh, imgSnow);
             numbersnow++;
         }
     }
@@ -177,7 +177,7 @@ public class Main extends ApplicationAdapter
     {
         for(int i = 0; i < numbersnow; i++)
         {
-            snow[i].fly();
+            snow1[i].fly();
         }
     }
 }

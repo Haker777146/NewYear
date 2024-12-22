@@ -10,9 +10,11 @@ public class Showers
     float stepX;
     float width;
     float height;
+    float rotation, speedRotation;
     Texture img;
     void fly()
     {
+        rotation += speedRotation;
         y -= stepY;
         x -= stepX;
     }
@@ -24,6 +26,7 @@ public class Showers
         this.height = height;
         stepY = MathUtils.random(1f,1.3f);
         stepX = MathUtils.random(-0.13f, 0.13f);
+        speedRotation = MathUtils.random(-0.5f, 0.5f);
         this.img = img;
     }
 }
